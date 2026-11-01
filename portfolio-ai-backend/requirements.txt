@@ -1,0 +1,8 @@
+# Runtime dependencies; keep in sync with [project.dependencies] in pyproject.toml.
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+pydantic-settings>=2.4,<3
+langchain-core>=1,<2
+langchain-groq>=1,<2
+langsmith>=0.14,<1
+# Optional RAG dependencies: install with `pip install -e ".[rag]"`.

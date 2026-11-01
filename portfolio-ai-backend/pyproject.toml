@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "portfolio-ai-backend"
+version = "0.1.0"
+description = "Backend foundation for a personal portfolio chatbot"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115,<1",
+    "uvicorn>=0.30,<1",
+    "pydantic-settings>=2.4,<3",
+    "langchain-core>=1,<2",
+    "langchain-groq>=1,<2",
+    "langsmith>=0.14,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "httpx>=0.27,<1"]
+rag = ["langchain-text-splitters>=1,<2", "langchain-chroma>=1,<2", "langchain-google-genai>=4,<5"]
+admin = ["sqlalchemy>=2,<3", "psycopg[binary]>=3,<4", "pgvector>=0.4,<1", "alembic>=1.13,<2", "supabase>=2,<3", "PyJWT[crypto]>=2.10,<3", "pypdf>=6,<7", "python-multipart>=0.0.20,<1", "langchain-text-splitters>=1,<2", "langchain-google-genai>=4,<5"]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

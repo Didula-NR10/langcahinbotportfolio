@@ -1,0 +1,44 @@
+{
+  "name": "didula-cosmic-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --configLoader runner --host 0.0.0.0",
+    "build": "vite build --configLoader runner",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "vitest run --configLoader runner",
+    "test:browser": "node scripts/chatbot-browser-smoke.mjs",
+    "deploy:worker": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "@tailwindcss/vite": "^4.3.3",
+    "clsx": "^2.1.1",
+    "gsap": "^3.13.0",
+    "lucide-react": "^0.468.0",
+    "motion": "^14.6.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "tailwind-merge": "^3.7.0",
+    "tailwindcss": "^4.3.3",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.8",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "jsdom": "^30.1.3",
+    "playwright-core": "^1.64.1",
+    "typescript": "^7.0.2",
+    "vite": "^6.0.0",
+    "vitest": "^5.0.5",
+    "wrangler": "^4.154.0"
+  }
+}

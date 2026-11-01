@@ -1,0 +1,278 @@
+.portfolio-home .galaxy-navigation,
+.portfolio-home .galaxy-navigation.is-scrolled {
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  min-height: 66px;
+  padding: 8px clamp(22px, 5vw, 78px);
+  justify-content: space-between;
+  border: 0;
+  border-radius: 0;
+  background: #101d22;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .13);
+  transform: none;
+}
+.portfolio-home .galaxy-navigation .gooey-nav {
+  --gn-frame: transparent !important;
+  --gn-frame-edge: transparent !important;
+  --gn-frame-highlight: transparent !important;
+  --gn-frame-shadow: none !important;
+  --gn-ink: #fff !important;
+  --gn-muted: rgba(235, 246, 242, .72) !important;
+}
+.portfolio-home .galaxy-navigation .gooey-nav--framed,
+html[data-theme] .portfolio-home .galaxy-navigation .gooey-nav--framed {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.portfolio-home .galaxy-navigation .navigation-brand,
+html[data-theme] .portfolio-home .galaxy-navigation .navigation-brand { color: #fff; }
+.portfolio-home .galaxy-navigation .navigation-theme-toggle,
+html[data-theme] .portfolio-home .galaxy-navigation .navigation-theme-toggle {
+  border-color: rgba(165, 209, 196, .3);
+  background: #1b3538;
+  color: #b8e8dc;
+}
+
+.portfolio-home .home-hero {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100svh;
+  padding-top: 66px;
+  background: #f9faf8;
+  color: #111b1d;
+  overflow: hidden;
+}
+.portfolio-home .home-hero-background {
+  position: absolute;
+  z-index: 0;
+  inset: 66px 0 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.portfolio-home .home-hero-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 42%;
+  width: 16%;
+  background: linear-gradient(90deg, transparent, #f9faf8 40% 60%, transparent);
+  opacity: .45;
+  pointer-events: none;
+}
+.portfolio-home .home-hero-background::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: radial-gradient(ellipse 30% 38% at 15% 45%, #f9faf8 0%, rgba(249, 250, 248, .87) 52%, transparent 100%), radial-gradient(ellipse 31% 38% at 84% 45%, #f9faf8 0%, rgba(249, 250, 248, .84) 50%, transparent 100%);
+  pointer-events: none;
+}
+.portfolio-home .home-coder-system {
+  position: absolute;
+  top: 0;
+  width: 54%;
+  height: 100%;
+}
+.portfolio-home .home-coder-system {
+  right: 0;
+  width: 68%;
+  opacity: .88;
+  --pcb-trace: #2b899f;
+  --pcb-secondary: #3b9bb0;
+  --pcb-body: #178ba8;
+  --pcb-head: #1facc6;
+  --pcb-glow: #43b9ca;
+  -webkit-mask-image: linear-gradient(270deg, #000 0 40%, transparent 99%);
+  mask-image: linear-gradient(270deg, #000 0 40%, transparent 99%);
+}
+.portfolio-home .pcb-trace {
+  fill: none;
+  stroke: var(--pcb-trace);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: bevel;
+  opacity: .43;
+}
+.portfolio-home .pcb-trace--secondary { stroke: var(--pcb-secondary); stroke-width: .75; opacity: .22; }
+.portfolio-home .pcb-signal {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: bevel;
+  animation-duration: var(--flow-duration);
+  animation-delay: var(--flow-delay);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.portfolio-home .pcb-signal--glow {
+  stroke: var(--pcb-glow);
+  stroke-width: 9;
+  stroke-dasharray: 100 1200;
+  stroke-dashoffset: 100;
+  opacity: .48;
+  filter: url(#home-pcb-soft-glow);
+  animation-name: pcb-glow-flow;
+}
+.portfolio-home .pcb-signal--body {
+  stroke: var(--pcb-body);
+  stroke-width: 3.4;
+  stroke-dasharray: 80 1200;
+  stroke-dashoffset: 80;
+  opacity: .9;
+  animation-name: pcb-body-flow;
+}
+.portfolio-home .pcb-signal--head {
+  stroke: var(--pcb-head);
+  stroke-width: 2;
+  stroke-dasharray: 24 1200;
+  stroke-dashoffset: 24;
+  animation-name: pcb-head-flow;
+}
+.portfolio-home .pcb-terminal-base { fill: var(--pcb-head); opacity: .48; }
+.portfolio-home .pcb-terminal-ring { fill: none; stroke: var(--pcb-trace); stroke-width: 1; opacity: .36; }
+.portfolio-home .pcb-terminal-flash {
+  fill: var(--pcb-head);
+  opacity: 0;
+  filter: url(#home-pcb-soft-glow);
+  animation: pcb-terminal-live var(--flow-duration) linear var(--flow-delay) infinite;
+}
+.portfolio-home .home-coder-system.is-paused .pcb-signal,
+.portfolio-home .home-coder-system.is-paused .pcb-terminal-flash { animation-play-state: paused; }
+@keyframes pcb-glow-flow { from { stroke-dashoffset: 100; } to { stroke-dashoffset: -1000; } }
+@keyframes pcb-body-flow { from { stroke-dashoffset: 80; } to { stroke-dashoffset: -1020; } }
+@keyframes pcb-head-flow { from { stroke-dashoffset: 24; } to { stroke-dashoffset: -1076; } }
+@keyframes pcb-terminal-live {
+  0%, 45%, 55%, 100% { opacity: 0; }
+  49%, 51% { opacity: .82; }
+}
+.portfolio-home .home-hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 1.65fr) minmax(0, 1fr);
+  gap: clamp(10px, 2.5vw, 38px);
+  align-items: start;
+  width: min(1520px, calc(100% - clamp(42px, 7.8vw, 140px)));
+  height: calc(clamp(570px, 82svh, 760px) - 66px);
+  margin-inline: auto;
+}
+.portfolio-home .home-hero-copy {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(105px, 13vw, 165px);
+}
+.portfolio-home .home-hero-copy--coder { text-align: left; }
+.portfolio-home .home-hero-eyebrow {
+  margin: 0 0 8px;
+  color: #237a70;
+  font: 700 10px/1.2 'JetBrains Mono', monospace;
+  letter-spacing: .16em;
+}
+.portfolio-home .home-hero-copy h1,
+.portfolio-home .home-hero-copy h2 {
+  margin: 0 0 12px;
+  color: #111819;
+  font: 800 clamp(43px, 4.2vw, 72px)/.98 'Space Grotesk', Inter, sans-serif;
+  letter-spacing: -.075em;
+  white-space: nowrap;
+}
+.portfolio-home .home-hero-copy h1 span { color: #237a70; }
+.portfolio-home .home-hero-copy p:not(.home-hero-eyebrow) {
+  max-width: 285px;
+  margin: 0;
+  color: #5b696a;
+  font: 400 clamp(12px, 1.08vw, 15px)/1.75 Inter, sans-serif;
+}
+.portfolio-home .home-hero-art {
+  position: relative;
+  z-index: 1;
+  align-self: stretch;
+  min-width: 0;
+  overflow: hidden;
+}
+.portfolio-home .home-hero-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0 87%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0 87%, transparent 100%);
+}
+.portfolio-home .home-hero-scroll {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  bottom: 31px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #176d63;
+  font: 700 12px/1 'Space Grotesk', Inter, sans-serif;
+  text-decoration: none;
+}
+.portfolio-home .home-hero-scroll:hover { text-decoration: underline; text-underline-offset: 4px; }
+.portfolio-home .home-hero-scroll svg { transform: rotate(45deg); }
+
+html[data-theme='dark'] .portfolio-home .home-hero { background: radial-gradient(ellipse 32% 52% at 15% 50%, rgba(28, 130, 128, .07), transparent 83%), radial-gradient(ellipse 32% 48% at 85% 50%, rgba(0, 141, 204, .08), transparent 83%), #071014; color: #f2f7f4; }
+html[data-theme='dark'] .portfolio-home .home-hero-background::before { background: radial-gradient(ellipse 30% 38% at 15% 45%, #071014 0%, rgba(7, 16, 20, .7) 52%, transparent 100%), radial-gradient(ellipse 31% 38% at 84% 45%, #071014 0%, rgba(7, 16, 20, .86) 50%, transparent 100%); }
+html[data-theme='dark'] .portfolio-home .home-hero-background::after { background: linear-gradient(90deg, transparent, #071014 40% 60%, transparent); }
+html[data-theme='dark'] .portfolio-home .home-coder-system {
+  opacity: .94;
+  --pcb-trace: #00d9ff;
+  --pcb-secondary: #008fb8;
+  --pcb-body: #00d9ff;
+  --pcb-head: #70f5ff;
+  --pcb-glow: #00d9ff;
+}
+html[data-theme='dark'] .portfolio-home .home-hero-copy h1,
+html[data-theme='dark'] .portfolio-home .home-hero-copy h2 { color: #f2f7f4; }
+html[data-theme='dark'] .portfolio-home .home-hero-copy h1 span,
+html[data-theme='dark'] .portfolio-home .home-hero-eyebrow,
+html[data-theme='dark'] .portfolio-home .home-hero-scroll { color: #85d4c3; }
+html[data-theme='dark'] .portfolio-home .home-hero-copy p:not(.home-hero-eyebrow) { color: #b8cac8; }
+@media (max-width: 1020px) {
+  .portfolio-home .pcb-route--tablet-detail { display: none; }
+  .portfolio-home .home-coder-system { opacity: .74; }
+  .portfolio-home .home-hero-inner { grid-template-columns: minmax(0, 1fr) minmax(290px, 1.42fr) minmax(0, 1fr); width: calc(100% - 48px); }
+  .portfolio-home .home-hero-copy h1,
+  .portfolio-home .home-hero-copy h2 { font-size: clamp(34px, 4.4vw, 48px); }
+  .portfolio-home .home-hero-copy p:not(.home-hero-eyebrow) { font-size: 12px; }
+}
+@media (max-width: 700px) {
+  .portfolio-home .pcb-route--mobile-hidden { display: none; }
+  .portfolio-home .pcb-signal--glow { filter: none; opacity: .25; }
+  .portfolio-home .galaxy-navigation,
+  .portfolio-home .galaxy-navigation.is-scrolled { min-height: 94px; padding: 9px 16px; flex-direction: column; gap: 0; }
+  .portfolio-home .galaxy-navigation > .navigation-brand { align-self: flex-start; }
+  .portfolio-home .galaxy-navigation > .navigation-theme-toggle,
+  .portfolio-home .galaxy-navigation.is-scrolled > .navigation-theme-toggle { top: 9px; right: 16px; }
+  .portfolio-home .home-hero { min-height: 100svh; padding-top: 95px; }
+  .portfolio-home .home-hero-background { inset: 95px 0 0; }
+  .portfolio-home .home-coder-system { top: 155px; width: 68%; height: calc(100% - 155px); }
+  .portfolio-home .home-coder-system { right: -18%; }
+  .portfolio-home .home-hero-inner {
+    width: min(600px, calc(100% - 36px));
+    height: auto;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 16px;
+  }
+  .portfolio-home .home-hero-art { grid-row: 2; grid-column: 1 / -1; width: min(100%, 450px); height: clamp(370px, 110vw, 555px); justify-self: center; }
+  .portfolio-home .home-hero-copy { grid-row: 1; margin: 28px 0 20px; }
+  .portfolio-home .home-hero-copy h1,
+  .portfolio-home .home-hero-copy h2 { font-size: clamp(32px, 7vw, 48px); }
+  .portfolio-home .home-hero-copy p:not(.home-hero-eyebrow) { font-size: 11px; line-height: 1.55; }
+  .portfolio-home .home-hero-eyebrow { font-size: 8px; }
+  .portfolio-home .home-hero-scroll { bottom: 15px; right: 6px; padding: 8px 10px; background: rgba(249,250,248,.88); }
+  html[data-theme='dark'] .portfolio-home .home-hero-scroll { background: rgba(19,35,41,.9); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-home .pcb-signal,
+  .portfolio-home .pcb-terminal-flash { display: none; }
+}

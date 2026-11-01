@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="data:,">
+  <title>Knowledge Lab · Portfolio AI</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <main id="login-view" class="login-shell">
+    <div class="login-intro">
+      <div class="brand-mark">K<span>.</span></div>
+      <p class="eyebrow">PORTFOLIO AI / PRIVATE TOOLS</p>
+      <h1>Your knowledge,<br><em>under control.</em></h1>
+      <p>Sign in to manage the documents behind your portfolio chatbot and test what it knows.</p>
+      <div class="login-foot">A development workspace for the portfolio knowledge API.</div>
+    </div>
+    <div class="login-panel">
+      <div class="panel-top"><span class="status-dot"></span> ADMIN ACCESS</div>
+      <h2>Welcome back</h2>
+      <p class="muted">Use your Supabase owner account to continue.</p>
+      <form id="login-form" class="stack">
+        <label>Email address<input name="email" type="email" autocomplete="username" required placeholder="you@example.com"></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" required placeholder="Enter your password"></label>
+        <details class="connection-settings">
+          <summary>Connection settings</summary>
+          <div class="stack inner-settings">
+            <label>FastAPI base URL<input id="api-url" type="url" required></label>
+            <label>Supabase project URL<input id="supabase-url" type="url" required placeholder="https://project.supabase.co"></label>
+            <label>Supabase publishable / anon key<input id="publishable-key" type="text" required autocomplete="off" placeholder="sb_publishable_…"></label>
+          </div>
+        </details>
+        <p id="login-error" class="form-error" role="alert" hidden></p>
+        <button id="login-button" class="button primary full" type="submit">Sign in <span aria-hidden="true">↗</span></button>
+      </form>
+      <p class="login-note">Connection values and session tokens stay in this tab's memory.</p>
+    </div>
+  </main>
+
+  <div id="app-view" class="app-shell" hidden>
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-brand"><div class="brand-mark small">K<span>.</span></div><div><strong>Knowledge Lab</strong><small>PORTFOLIO AI</small></div></div>
+      <div class="nav-caption">WORKSPACE</div>
+      <nav aria-label="Primary">
+        <button class="nav-item active" data-view="dashboard"><span aria-hidden="true">◫</span> Dashboard</button>
+        <button class="nav-item" data-view="upload"><span aria-hidden="true">⇧</span> Upload documents</button>
+        <button class="nav-item" data-view="documents"><span aria-hidden="true">▤</span> Manage documents</button>
+        <button class="nav-item" data-view="statistics"><span aria-hidden="true">◷</span> Statistics</button>
+        <button class="nav-item" data-view="chat"><span aria-hidden="true">◇</span> Test chatbot</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="user-card"><span class="avatar">A</span><span><strong id="user-email">Admin</strong><small>Authenticated session</small></span></div><button id="logout-button" class="nav-item logout">↪ &nbsp; Log out</button></div>
+    </aside>
+    <div class="main-wrap">
+      <header class="topbar"><button id="menu-button" class="icon-button menu-button" aria-label="Toggle menu" aria-expanded="false">☰</button><div class="breadcrumb">WORKSPACE <span>/</span> <strong id="breadcrumb-current">Dashboard</strong></div><div class="topbar-right"><span class="live-indicator"><i></i> ADMIN SESSION</span><button id="refresh-button" class="icon-button" title="Refresh current view" aria-label="Refresh current view">↻</button></div></header>
+      <main class="content">
+        <section id="dashboard-section" class="view">
+          <div class="page-heading"><div><p class="eyebrow">OVERVIEW</p><h1>Knowledge dashboard</h1><p>Monitor the content your portfolio assistant can use.</p></div><button class="button primary" data-go="upload">+ Upload PDF</button></div>
+          <div id="dashboard-stats" class="stat-grid"></div>
+          <div class="two-columns"><section class="card"><div class="card-heading"><div><h2>Recent documents</h2><p>Latest additions to your knowledge base</p></div><button class="text-button" data-go="documents">View all →</button></div><div id="recent-documents" class="recent-list"></div></section><section class="card info-card"><div class="info-icon">✦</div><p class="eyebrow">TEST THE CONNECTION</p><h2>Ask your portfolio AI</h2><p>After a document is indexed, ask a question about its content and inspect the returned sources.</p><button class="button secondary" data-go="chat">Open chatbot tester →</button></section></div>
+        </section>
+        <section id="upload-section" class="view" hidden>
+          <div class="page-heading"><div><p class="eyebrow">KNOWLEDGE BASE / ADD CONTENT</p><h1>Upload documents</h1><p>Add PDF files for indexing and retrieval.</p></div></div>
+          <div class="card upload-card"><div class="card-heading"><div><h2>New upload</h2><p>Files are queued for processing after upload.</p></div></div><form id="upload-form"><div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Choose PDF files"><span class="upload-icon">⇧</span><strong>Drop PDF files here</strong><span>or click to browse your files</span><small>PDF only · up to 15 MiB each · up to 10 files</small></div><input id="file-input" type="file" accept=".pdf,application/pdf" multiple hidden><div id="selected-files" class="selected-files"></div><div class="form-grid"><label>Category <span class="required">*</span><input id="upload-category" required maxlength="80" pattern="[A-Za-z0-9][A-Za-z0-9 _-]*" value="projects" placeholder="e.g. projects"></label><label>Title <small>(single file only)</small><input id="upload-title" maxlength="200" placeholder="Optional document title"></label></div><label class="block-label">Description <small>(single file only)</small><textarea id="upload-description" maxlength="1000" rows="3" placeholder="Optional notes about this document"></textarea></label><div class="form-actions"><p id="upload-hint" class="muted">Select one or more PDF files to begin.</p><button id="upload-button" class="button primary" type="submit" disabled>Upload documents</button></div></form><div id="upload-results" class="result-list" aria-live="polite"></div></div>
+        </section>
+        <section id="documents-section" class="view" hidden>
+          <div class="page-heading"><div><p class="eyebrow">KNOWLEDGE BASE / LIBRARY</p><h1>Manage documents</h1><p>View processing status and manage your source files.</p></div><button class="button primary" data-go="upload">+ Upload PDF</button></div>
+          <div class="card table-card"><div class="toolbar"><input id="document-search" type="search" placeholder="Search filename, title, or category" aria-label="Search documents"><select id="status-filter" aria-label="Filter by status"><option value="">All statuses</option><option>uploaded</option><option>queued</option><option>processing</option><option>indexed</option><option>failed</option><option>deleting</option></select></div><div class="table-scroll"><table><thead><tr><th>DOCUMENT</th><th>CATEGORY</th><th>SIZE</th><th>UPLOADED</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody id="document-rows"></tbody></table></div><div id="document-empty" class="empty-state" hidden>No documents found.</div><div class="pagination"><span id="document-count"></span><div><button id="previous-page" class="button ghost" type="button">Previous</button><button id="next-page" class="button ghost" type="button">Next</button></div></div></div>
+        </section>
+        <section id="statistics-section" class="view" hidden><div class="page-heading"><div><p class="eyebrow">KNOWLEDGE BASE / INSIGHTS</p><h1>Knowledge statistics</h1><p>Counts from all document pages returned by the API.</p></div></div><div id="statistics-stats" class="stat-grid"></div><section class="card"><div class="card-heading"><div><h2>Indexing health</h2><p>Current distribution of document states</p></div></div><div id="status-bars" class="status-bars"></div></section></section>
+        <section id="chat-section" class="view" hidden><div class="page-heading"><div><p class="eyebrow">ASSISTANT / SANDBOX</p><h1>Test chatbot</h1><p>Ask real questions and inspect the backend's sources.</p></div><button id="new-chat" class="button secondary">New conversation</button></div><div class="card chat-card"><div class="chat-top"><span class="chat-avatar">✦</span><div><strong>Portfolio assistant</strong><small>Uses /api/v1/chat</small></div><span class="chat-online">● Ready</span></div><div id="chat-messages" class="chat-messages" role="log" aria-live="polite"><div class="chat-welcome"><span>✦</span><h2>Start a conversation</h2><p>Ask a question about an indexed project, skill, or experience. Source documents appear with the answer when the backend provides them.</p></div></div><form id="chat-form" class="chat-compose"><label class="sr-only" for="chat-input">Your question</label><textarea id="chat-input" rows="2" maxlength="2000" required placeholder="Ask a question about your portfolio..."></textarea><button id="chat-send" class="button primary" type="submit">Send ↗</button></form></div></section>
+      </main>
+    </div>
+  </div>
+
+  <dialog id="document-dialog" class="modal"><div class="modal-head"><div><p class="eyebrow">DOCUMENT DETAILS</p><h2 id="dialog-title">Document</h2></div><button id="dialog-close" class="icon-button" aria-label="Close details">×</button></div><div id="dialog-body"></div></dialog>
+  <dialog id="confirm-dialog" class="modal confirm-modal"><h2 id="confirm-title">Confirm action</h2><p id="confirm-message"></p><div class="modal-actions"><button id="confirm-cancel" class="button secondary">Cancel</button><button id="confirm-accept" class="button danger">Confirm</button></div></dialog>
+  <input id="replace-input" type="file" accept=".pdf,application/pdf" hidden>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

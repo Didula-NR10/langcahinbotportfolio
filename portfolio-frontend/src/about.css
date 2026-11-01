@@ -1,0 +1,85 @@
+.about-page{position:relative;min-height:100svh;overflow-x:clip;background:#030611;color:#f4f7ff;font-family:Inter,Arial,sans-serif}
+.about-page *{box-sizing:border-box}
+.about-page h1,.about-page h2,.journey-gateway h1{font-family:'Space Grotesk',Arial,sans-serif}
+.about-page em{font-style:normal;color:#9cc7ff}
+.about-page a{color:inherit;text-decoration:none}
+.about-page :focus-visible,.journey-gateway :focus-visible{outline:2px solid #63dfff;outline-offset:4px}
+
+.observatory-hero{position:relative;isolation:isolate;display:flex;align-items:center;min-height:100svh;overflow:hidden;background:#030611}
+.observatory-scene,.observatory-image,.observatory-shade{position:absolute;inset:0;pointer-events:none}
+.observatory-scene{z-index:-1;overflow:hidden}
+.observatory-image{background:url('/assets/observatory-earth.png') center center/cover no-repeat}
+.observatory-image{z-index:0}
+.observatory-shade{z-index:4;background:linear-gradient(90deg,rgba(2,5,14,.94) 0%,rgba(2,5,14,.74) 29%,rgba(2,5,14,.32) 59%,rgba(2,5,14,.18) 100%),linear-gradient(0deg,#030611 0%,transparent 15%,transparent 83%,#03061166 100%)}
+.about-composition{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.48fr) minmax(0,1.05fr) minmax(0,.92fr);grid-template-rows:auto auto;align-items:center;column-gap:12px;width:min(1540px,calc(100% - 88px));min-height:min(710px,calc(100svh - 120px));margin:95px auto 25px}
+.observatory-hero-content{grid-column:1;grid-row:1;align-self:end;padding-bottom:12px}
+.about-eyebrow,.observatory-coordinate,.about-scroll,.profile-details-kicker,.profile-details-label,.profile-meta dt,.hologram-hover-label,.identity-dialog>p:first-of-type,.identity-dialog small{font:500 10px/1.5 'JetBrains Mono',monospace;letter-spacing:.13em}
+.about-eyebrow{color:#8ebcf3;margin:0 0 29px}
+.observatory-hero h1{max-width:650px;margin:0 0 32px;font-size:clamp(43px,4.2vw,68px);line-height:1.05;letter-spacing:-.062em;text-shadow:0 8px 24px #000a}
+.observatory-hero h1 span{display:block}
+.hero-lead{max-width:545px;color:#e9f0fd;font-size:clamp(15px,1.28vw,19px);line-height:1.65;margin:0 0 15px;text-shadow:0 2px 12px #000}
+.hero-secondary{max-width:510px;color:#c5d2e6;font-size:14px;line-height:1.75;margin:0;text-shadow:0 2px 12px #000}
+.about-scroll{grid-column:1;grid-row:2;justify-self:start;align-self:start;display:inline-flex;align-items:center;gap:28px;margin-top:32px;padding:15px 17px;border:1px solid #6e8ab077;border-radius:3px;color:#dbeaff;background:#071020cc;transition:background .2s,border-color .2s}
+.about-scroll:hover{background:#183b75;border-color:#7aaff7}
+.observatory-coordinate{position:absolute;right:46px;bottom:25px;color:#94b9e4;z-index:2}
+
+.observatory-hologram{grid-column:2;grid-row:1 / span 2;position:relative;width:100%;height:clamp(430px,65svh,600px);align-self:center}
+.hologram-shell,.hologram-trigger,.hologram{position:relative;display:block;width:100%;height:100%}
+.hologram-trigger{padding:0;border:0;background:transparent;cursor:pointer;color:inherit;perspective:900px}
+.hologram{isolation:isolate;transform-style:preserve-3d;transition:transform .6s ease,filter .5s ease;filter:drop-shadow(0 0 10px #3f9fff55)}
+.hologram-trigger:hover .hologram,.hologram-trigger:focus-visible .hologram{transform:rotateY(-3deg) rotateX(2deg);filter:drop-shadow(0 0 20px #3f9fff99)}
+.hologram:before{content:'';position:absolute;left:50%;top:42%;width:86%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,#061329d1 0%,#0b2c589a 36%,#277fe528 58%,transparent 72%)}
+.hologram-beam{position:absolute;left:11%;right:11%;top:38%;bottom:10%;background:linear-gradient(180deg,#4ecbff00,#4ecbff18 48%,#51caff38 95%,#85eaff77);clip-path:polygon(45% 0%,55% 0%,91% 100%,9% 100%);filter:blur(8px);mix-blend-mode:screen}
+.hologram-ring{position:absolute;left:50%;top:41%;display:block;aspect-ratio:1;border:1px solid #83cbff9c;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 14px #63dfff68,inset 0 0 14px #63dfff2b}
+.hologram-ring-outer{width:88%;max-width:460px;border-color:#78bff366;animation:hologram-ring-clockwise 32s linear infinite}
+.hologram-ring-outer:before,.hologram-ring-outer:after{content:'';position:absolute;inset:-7%;border:1px solid #7bbfff50;border-radius:50%;transform:scaleY(.83) rotate(-18deg)}
+.hologram-ring-outer:after{inset:8%;border-color:#b4e3ff57;transform:scaleY(.96) rotate(18deg)}
+.hologram-ring-middle{width:76%;max-width:400px;border-style:dashed;border-color:#9bd9ff84;animation:hologram-ring-counter 40s linear infinite}
+.hologram-ring-inner{width:67%;max-width:350px;border-color:#c5ecff70}
+.hologram-ring i{position:absolute;display:block;width:5px;height:5px;border-radius:50%;background:#d9f6ff;box-shadow:0 0 10px 4px #52c9ff}
+.hologram-ring i:first-child{left:49%;top:-3px}.hologram-ring i:nth-child(2){right:5%;bottom:20%}.hologram-ring-middle i{left:10%;top:14%;width:3px;height:3px}
+.hologram-orbit-particle{position:absolute;left:50%;top:41%;width:90%;max-width:480px;aspect-ratio:1;transform:translate(-50%,-50%);animation:hologram-ring-clockwise 18s linear infinite}
+.hologram-orbit-particle:after{content:'';position:absolute;left:50%;top:0;width:3px;height:3px;border-radius:50%;background:#d9f8ff;box-shadow:0 0 8px 2px #76d8ff}
+.hologram-orbit-particle-two{width:69%;animation-duration:27s;animation-direction:reverse}.hologram-orbit-particle-two:after{width:2px;height:2px}
+.hologram-trigger:hover .hologram-ring-outer,.hologram-trigger:focus-visible .hologram-ring-outer{animation-duration:52s}
+.hologram-trigger:hover .hologram-ring-middle,.hologram-trigger:focus-visible .hologram-ring-middle{animation-duration:64s}
+.hologram-portrait{position:absolute;left:50%;top:44%;width:61%;max-width:300px;height:64%;transform:translate(-50%,-50%);overflow:hidden;border-radius:47% 47% 25% 25%;background:radial-gradient(circle at 50% 42%,#164f8d78,#071a3373 62%,transparent 78%);filter:drop-shadow(0 0 14px #49a8ffb0);-webkit-mask-image:linear-gradient(#000 0 70%,transparent 98%);mask-image:linear-gradient(#000 0 70%,transparent 98%)}
+.hologram-portrait img,.hologram-silhouette{display:block;width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:grayscale(1) sepia(.35) hue-rotate(168deg) saturate(2.2) contrast(1.2);opacity:.92}
+.hologram-silhouette{filter:drop-shadow(0 0 12px #66c8ff);opacity:1}
+.hologram-scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 5px,#9de3ff17 6px,transparent 7px);mix-blend-mode:screen;animation:hologram-scan 8s linear infinite}
+.hologram-platform{position:absolute;left:50%;bottom:5%;width:70%;height:17%;transform:translateX(-50%);border:1px solid #7fceffb0;border-radius:50%;box-shadow:0 0 24px #367bff8e,inset 0 0 32px #3ba5ff75;background:radial-gradient(ellipse,#63dfff5c,#0a274d99 47%,#07182a 70%);animation:hologram-pulse 4s ease-in-out infinite}
+.hologram-platform span{position:absolute;inset:13%;border:1px solid #a7e7ff9c;border-radius:50%}.hologram-platform span:nth-child(2){inset:28%;border-color:#d2f3ff}.hologram-platform span:nth-child(3){inset:43%;background:#dff8ff;box-shadow:0 0 16px 8px #55b9ff}
+.hologram-corner{position:absolute;color:#9cdbff;font:18px 'JetBrains Mono',monospace;text-shadow:0 0 12px #4fb5ff}.hologram-corner-top{left:6%;top:10%}.hologram-corner-bottom{right:7%;bottom:17%}
+.hologram-hover-label{position:absolute;left:50%;top:5%;width:max-content;padding:7px 10px;color:#d5f0ff;background:#071429b8;border:1px solid #70cfff66;opacity:0;transform:translate(-50%,7px);transition:opacity .3s,transform .3s}
+.hologram-trigger:hover .hologram-hover-label,.hologram-trigger:focus-visible .hologram-hover-label{opacity:1;transform:translate(-50%,0)}
+
+.profile-details{grid-column:3;grid-row:1 / span 2;align-self:center;max-width:330px;width:100%;min-height:455px;padding:22px 14px 20px 23px;border-left:1px solid #72ceff78;background:linear-gradient(90deg,#07172bc9,#07172b56 75%,transparent);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:inset 12px 0 30px #22549017}
+.profile-details-kicker,.profile-details-label,.profile-meta dt{color:#8bb8e6;font-size:9px}
+.profile-details-header h2{font-size:clamp(29px,2.3vw,38px);line-height:1;margin:18px 0 5px;letter-spacing:.06em}
+.profile-details-header p{color:#d4e5f8;font-size:13px;margin:0}
+.profile-details-rule{width:100%;height:1px;margin:24px 0 21px;background:linear-gradient(90deg,#6bd6ff,transparent);box-shadow:0 0 8px #56bfff66}
+.profile-details-label{margin:0 0 7px}
+.profile-interests{list-style:none;margin:0;padding:0}
+.profile-interests li{display:flex;align-items:center;gap:11px;min-height:43px;border-bottom:1px solid #8cc0ef26;color:#e1ecf9;font-size:12px;line-height:1.25;transition:background .2s,color .2s}
+.profile-interests li:hover{background:#2762a724;color:#fff}
+.profile-interests svg{flex:none;color:#66d6ff;transition:filter .2s}.profile-interests li:hover svg{filter:drop-shadow(0 0 5px #5acbff)}
+.profile-meta{display:grid;gap:18px;margin:22px 0 0}.profile-meta div{display:grid;gap:5px}.profile-meta dt{margin:0}.profile-meta dd{margin:0;color:#edf5ff;font-size:12px;line-height:1.45}
+
+.identity-dialog-backdrop{position:fixed;z-index:30;inset:0;display:grid;place-items:center;padding:20px;background:#020710b8;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+.identity-dialog{position:relative;width:min(420px,100%);padding:34px;border:1px solid #81d4ff8c;background:linear-gradient(145deg,#102b4c,#061326 75%);box-shadow:0 22px 80px #000a,0 0 35px #4ea7ff33;color:#e8f4ff;text-align:left}
+.identity-dialog-close{position:absolute;right:16px;top:15px;display:grid;place-items:center;width:32px;height:32px;border:1px solid #83cfff77;background:#102b4c;color:#e8f4ff;cursor:pointer}
+.identity-dialog>p:first-of-type{margin:0;color:#8dcaff}.identity-dialog h2{font-size:44px;letter-spacing:.08em;margin:18px 0 0}.identity-dialog>span{font-size:15px;color:#d4e8fc}.identity-dialog-rule{height:1px;background:linear-gradient(90deg,#70cdff,transparent);margin:24px 0}.identity-dialog>p:nth-last-of-type(1){color:#bdd1e7;font-size:14px;line-height:1.7}.identity-dialog small{color:#81b7e6}
+
+.journey-gateway-content{position:relative;z-index:4;display:flex;align-items:flex-start;justify-content:center;flex-direction:column;width:min(800px,calc(100% - 48px));min-height:100svh;margin:auto;color:#edf5ff;font-family:Inter,Arial,sans-serif}.journey-gateway-content>svg{color:#88bfff}.journey-gateway-content p{margin:28px 0 14px;color:#9bbbe8;font:11px 'JetBrains Mono',monospace;letter-spacing:.18em}.journey-gateway-content h1{font-size:clamp(42px,6vw,80px);line-height:1.05;letter-spacing:-.06em;margin:0 0 20px}.journey-gateway-content>span{color:#aabbd4;line-height:1.7}.journey-gateway-content a{display:flex;align-items:center;gap:12px;color:#d9eaff;text-decoration:none;margin-top:34px;font:11px 'JetBrains Mono',monospace;letter-spacing:.1em}
+
+@keyframes hologram-ring-clockwise{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes hologram-ring-counter{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(-360deg)}}
+@keyframes hologram-scan{from{transform:translateY(-8px)}to{transform:translateY(8px)}}
+@keyframes hologram-pulse{50%{box-shadow:0 0 32px #4db9ffb8,inset 0 0 40px #56caffaa}}
+
+@media(max-width:1180px){.about-composition{width:calc(100% - 58px);column-gap:4px;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr) minmax(0,.88fr)}.observatory-hero h1{font-size:clamp(39px,4.1vw,56px)}.hero-lead{font-size:15px}.hero-secondary{font-size:13px}.profile-details{padding-left:17px;padding-right:7px}.profile-interests li{font-size:11px}}
+@media(max-width:900px){.observatory-hero{align-items:flex-start}.about-composition{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);grid-template-rows:auto auto auto;column-gap:0;row-gap:0;margin:132px auto 55px}.observatory-hero-content{grid-column:1;grid-row:1;align-self:center}.observatory-hero h1{font-size:clamp(40px,5vw,56px)}.observatory-hologram{grid-column:2;grid-row:1 / span 2;height:480px}.profile-details{grid-column:1 / -1;grid-row:3;display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:22px;align-items:center;max-width:none;min-height:0;margin-top:20px;padding:18px 22px}.profile-details-rule{display:none}.profile-details-label{grid-column:2;grid-row:1;align-self:start;margin:0}.profile-interests{grid-column:2;grid-row:1;padding-top:16px}.profile-interests li{min-height:32px}.profile-meta{margin:0;gap:16px}.about-scroll{grid-column:1;grid-row:2;margin-top:18px}.observatory-coordinate{display:none}}
+@media(max-width:700px){.observatory-image,.observatory-clean,.observatory-frame{background-position:68% center}.observatory-clean{clip-path:polygon(0 49%,100% 23%,100% 80%,0 72%)}.observatory-shade{background:linear-gradient(0deg,#030611 0%,#030611df 40%,#0306119e 72%,#03061177 100%)}.rotating-earth{clip-path:polygon(0 10%,100% 9%,100% 74%,0 69%)}.about-composition{display:flex;flex-direction:column;align-items:stretch;width:calc(100% - 40px);min-height:0;margin:155px auto 40px}.observatory-hero-content{padding:0;align-self:auto}.about-eyebrow{font-size:8px;letter-spacing:.08em;margin-bottom:19px}.observatory-hero h1{font-size:clamp(37px,9vw,60px);margin-bottom:19px}.hero-lead{font-size:15px;line-height:1.55}.hero-secondary{font-size:13px;line-height:1.65}.observatory-hologram{width:min(100%,390px);height:390px;margin:10px auto 0}.profile-details{display:block;width:100%;margin:4px 0 0;padding:20px 22px;min-height:0}.profile-details-rule{display:block;margin:15px 0}.profile-details-label{margin:0 0 6px}.profile-interests{padding:0}.profile-interests li{min-height:38px;font-size:12px}.profile-meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px}.about-scroll{margin:24px 0 0;align-self:flex-start;font-size:9px}}
+@media(max-width:430px){.about-composition{margin-top:195px}}
+@media(max-width:390px){.observatory-hero h1{font-size:37px}.about-eyebrow{font-size:7px}.observatory-hologram{height:340px}.profile-details{padding:18px}}
+@media(prefers-reduced-motion:reduce){.about-page *{animation-duration:.01ms!important;transition-duration:.01ms!important}.observatory-clean,.rotating-earth,.observatory-frame{display:none!important}}

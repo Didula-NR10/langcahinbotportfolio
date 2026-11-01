@@ -1,0 +1,149 @@
+/* Boxed About layout; the original observatory artwork remains behind it. */
+.about-page .observatory-hero {
+  align-items: center;
+  background: #101113;
+}
+
+.about-page .observatory-image {
+  opacity: .28;
+  filter: saturate(.7);
+}
+
+.about-page .observatory-shade {
+  background: linear-gradient(90deg, rgba(12, 14, 18, .77), rgba(12, 14, 18, .7)),
+    linear-gradient(0deg, #101113 0%, transparent 20%, transparent 78%, #101113 100%);
+}
+
+.about-page .about-composition {
+  display: grid;
+  grid-template-columns: minmax(340px, .9fr) minmax(0, 1.45fr);
+  grid-template-rows: auto;
+  align-items: stretch;
+  gap: 28px;
+  width: min(1320px, calc(100% - 80px));
+  min-height: 0;
+  margin: 116px auto 52px;
+}
+
+.about-visual-card,
+.about-summary-card,
+.about-page .profile-details {
+  border: 1px solid rgba(218, 225, 237, .09);
+  border-radius: 18px;
+  background: rgba(29, 32, 36, .94);
+  box-shadow: 0 24px 55px rgba(0, 0, 0, .15);
+}
+
+.about-visual-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 620px;
+  padding: 30px;
+  overflow: hidden;
+}
+
+.about-page .about-eyebrow {
+  margin: 0;
+  color: #9fb7d6;
+  font-size: 10px;
+}
+
+.about-page .observatory-hologram {
+  grid-column: auto;
+  grid-row: auto;
+  align-self: center;
+  width: min(100%, 420px);
+  height: 480px;
+  margin: auto 0;
+}
+
+.about-page .hologram,
+.about-page .hologram-trigger:hover .hologram,
+.about-page .hologram-trigger:focus-visible .hologram {
+  transform: none;
+  filter: none;
+}
+
+.about-page .hologram::before { display: none; }
+.about-page .hologram-trigger { perspective: none; }
+.about-page .hologram-projector-base { position: absolute; z-index: 3; left: 9%; bottom: 0; display: block; width: 82%; height: auto; object-fit: contain; }
+.about-page .hologram-photo-beam { position: absolute; z-index: 1; top: 48%; bottom: 17%; left: 20%; right: 20%; pointer-events: none; background: linear-gradient(80deg, transparent 26%, rgba(125, 202, 240, .14) 35%, transparent 44%), linear-gradient(100deg, transparent 56%, rgba(125, 202, 240, .14) 65%, transparent 74%), linear-gradient(to top, rgba(118, 192, 232, .21), transparent 90%); clip-path: polygon(0 0, 100% 0, 58% 100%, 42% 100%); mask-image: linear-gradient(to bottom, transparent, #000 35%, #000 82%, transparent); filter: blur(4px); }
+.about-page .hologram-profile-photo { position: absolute; z-index: 2; top: 3%; left: 0; width: 100%; height: 64%; object-fit: contain; object-position: center bottom; filter: saturate(.95); opacity: 1; mask-image: linear-gradient(#000 0 91%, transparent 100%); }
+.about-page .hologram-empty-portrait { position: absolute; z-index: 2; inset: 8% 14% 24%; display: grid; place-items: center; color: #b5c4d4; opacity: .62; mask-image: linear-gradient(#000 0 65%, transparent 100%); }
+
+.about-visual-caption {
+  margin: 0;
+  color: #d8e3f1;
+  font: 600 11px/1.5 'JetBrains Mono', monospace;
+  letter-spacing: .12em;
+}
+
+.about-visual-caption span { color: #69baff; }
+
+.about-details-stack {
+  display: grid;
+  grid-template-rows: minmax(0, auto) minmax(0, auto);
+  gap: 18px;
+  min-width: 0;
+}
+
+.about-summary-card { padding: 34px 38px 30px; }
+.about-card-kicker { display: flex; align-items: center; gap: 10px; margin: 0 0 19px; color: #f1f5fc; font-size: 12px; font-weight: 700; }
+.about-card-kicker span { width: 9px; height: 9px; border-radius: 50%; background: #4f98ff; }
+.about-card-kicker--warm span { background: #ff645d; }
+.about-page .about-summary-card h1 { max-width: none; margin: 0 0 19px; font-size: clamp(30px, 3vw, 43px); font-weight: 700; letter-spacing: -.045em; line-height: 1.16; text-shadow: none; }
+.about-page .about-summary-card h1 em { color: #9dc9ff; }
+.about-summary-card > p:not(.about-card-kicker) { max-width: 780px; margin: 0 0 15px; color: #c6cfdd; font-size: 15px; line-height: 1.75; }
+.about-page .about-scroll { display: inline-flex; grid-column: auto; grid-row: auto; align-self: auto; gap: 10px; margin: 13px 0 0; padding: 0; border: 0; background: none; color: #9dc9ff; box-shadow: none; font-size: 10px; }
+.about-page .about-scroll:hover { color: #d9efff; background: none; }
+
+.about-page .profile-details {
+  display: block;
+  grid-column: auto;
+  grid-row: auto;
+  align-self: stretch;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  padding: 28px 38px 30px;
+  backdrop-filter: none;
+}
+
+.about-page .profile-details-header h2 { margin: 0 0 20px; color: #fff; font-size: 26px; letter-spacing: -.035em; }
+.about-page .profile-details-body { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 28px; }
+.about-page .profile-meta { display: grid; gap: 14px; margin: 0; }
+.about-page .profile-meta div { display: block; }
+.about-page .profile-meta dt { display: flex; align-items: center; gap: 9px; margin-bottom: 5px; color: #a7b5c9; font-size: 10px; letter-spacing: .1em; }
+.about-page .profile-meta dt svg { color: #65aaff; }
+.about-page .profile-meta dd { margin-left: 25px; color: #e8edf5; font-size: 13px; line-height: 1.45; }
+.about-page .profile-focus { min-width: 0; padding-left: 26px; border-left: 1px solid rgba(218, 225, 237, .1); }
+.about-page .profile-details-label { margin: 0 0 8px; color: #a7b5c9; font-size: 10px; letter-spacing: .1em; }
+.about-page .profile-interests { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 0; }
+.about-page .profile-interests li { display: flex; min-height: 49px; gap: 8px; padding: 8px 10px; border: 1px solid rgba(218, 225, 237, .12); border-radius: 10px; background: rgba(10, 14, 21, .24); color: #dbe4ef; font-size: 11px; }
+.about-page .profile-interests li:hover { background: rgba(81, 129, 191, .15); }
+.about-page .profile-interests svg { color: #7dbaff; }
+
+@media (max-width: 1050px) {
+  .about-page .about-composition { grid-template-columns: minmax(290px, .82fr) minmax(0, 1.18fr); gap: 18px; width: calc(100% - 48px); }
+  .about-visual-card { padding: 24px; }
+  .about-summary-card, .about-page .profile-details { padding: 26px; }
+  .about-page .profile-details-body { grid-template-columns: 1fr; gap: 20px; }
+  .about-page .profile-focus { padding: 18px 0 0; border-left: 0; border-top: 1px solid rgba(218, 225, 237, .1); }
+}
+
+@media (max-width: 720px) {
+  .about-page .about-composition { grid-template-columns: 1fr; width: calc(100% - 32px); margin: 156px auto 32px; }
+  .about-visual-card { min-height: 440px; }
+  .about-page .observatory-hologram { height: 340px; }
+  .about-page .hologram-profile-photo { height: 59%; }
+  .about-page .hologram-projector-base { left: 14%; width: 72%; }
+  .about-page .observatory-image { background-position: 68% center; opacity: .2; }
+  .about-page .observatory-shade { background: rgba(12, 14, 18, .78); }
+}
+
+@media (max-width: 430px) {
+  .about-page .about-composition { margin-top: 178px; }
+  .about-summary-card, .about-page .profile-details { padding: 22px; }
+  .about-page .profile-interests { grid-template-columns: 1fr; }
+}

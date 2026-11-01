@@ -1,0 +1,47 @@
+.app { min-height: max(860px, 100svh); background: #050816; color: #F1F5F9; font-family: Inter, Arial, sans-serif; }
+.tech-name, .object-label, .proof small { font-family: Inter, Arial, sans-serif; }
+.eyebrow, .detail-type, .dest-heading, .status { font-family: 'JetBrains Mono', monospace; }
+.dest:focus-visible, .primary:focus-visible, .quiet:focus-visible { outline: 2px solid #67E8F9; outline-offset: 4px; }
+.intro, .detail { top: 45%; }
+.proof { margin-top: 32px; }
+.universe::after {
+  background: linear-gradient(90deg, rgba(5, 8, 22, .78), rgba(5, 8, 22, .14) 62%, rgba(5, 8, 22, .16)),
+    linear-gradient(0deg, rgba(5, 8, 22, .52), transparent 30%);
+}
+.foot { border-color: rgba(103, 232, 249, .12); }
+.side-index, .dest-heading, .status, .foot { color: rgba(241, 245, 249, .55); }
+.eyebrow span, .status-dot { background: #3B82F6; }
+.eyebrow, .object-label { color: #F1F5F9; }
+h1 em, h2 b, .detail-type, .tech-summary, .dest-heading span,
+.dest-number, .dest-arrow, .tech-fallback { color: #67E8F9; }
+.intro p, .detail p { color: rgba(241, 245, 249, .72); }
+.proof small, .tech-summary span { color: rgba(241, 245, 249, .58); }
+.primary { background: #3B82F6; color: #F1F5F9; box-shadow: 0 9px 30px rgba(59, 130, 246, .25); }
+.primary:hover { background: #3B82F6; box-shadow: 0 11px 34px rgba(59, 130, 246, .4); }
+.quiet { color: #67E8F9; }
+.dest-heading, .dest { border-color: rgba(103, 232, 249, .13); }
+.dest { color: rgba(241, 245, 249, .66); }
+.dest:hover, .dest.active { color: #F1F5F9; }
+.dest.active { border-color: #3B82F6; }
+.tech-logo, .orbit-tech .tech-logo {
+  color: #F1F5F9;
+  background: rgba(5, 8, 22, .93);
+  border-color: rgba(103, 232, 249, .48);
+  box-shadow: 0 0 14px rgba(103, 232, 249, .18);
+}
+.tech-name { color: #F1F5F9; text-shadow: 0 0 9px rgba(103, 232, 249, .3); }
+.tech-logo img { filter: drop-shadow(0 0 6px rgba(103, 232, 249, .35)); }
+.tech-fallback { background: rgba(59, 130, 246, .18); box-shadow: 0 0 10px rgba(103, 232, 249, .18); }
+.orbit-track { border-color: rgba(103, 232, 249, .3); box-shadow: 0 0 24px rgba(103, 232, 249, .1); }
+.orbit-track-two { border-color: rgba(59, 130, 246, .27); }
+.travel-progress > div { background: #3B82F6; }
+
+@media (max-width: 950px) {
+  .app { min-height: max(850px, 100svh); }
+  .intro, .detail { top: 36%; }
+}
+
+@media (max-width: 600px) {
+  .app { min-height: max(900px, 100svh); }
+  .intro, .detail { top: 32%; }
+}

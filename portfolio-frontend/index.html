@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050816" />
+    <meta name="description" content="Didula's portfolio: software engineering, cloud architecture, AI, cybersecurity, and selected projects." />
+    <script>
+      try {
+        const saved = JSON.parse(localStorage.getItem('portfolio-theme-preferences') || 'null');
+        const appearance = saved?.appearance || localStorage.getItem('portfolio-theme') || 'dark';
+        document.documentElement.dataset.theme = appearance === 'light' ? 'light' : 'dark';
+        if (saved?.paletteId && saved.paletteId !== 'original' && saved.tokens) {
+          document.documentElement.dataset.palette = saved.paletteId;
+          Object.entries(saved.tokens).forEach(([name, value]) => {
+            if (name.startsWith('--') && typeof value === 'string') document.documentElement.style.setProperty(name, value);
+          });
+          document.documentElement.dataset.paletteVariables = Object.keys(saved.tokens).join(',');
+        }
+        document.querySelector('meta[name="theme-color"]').content = saved?.tokens?.['--theme-bg'] || (appearance === 'light' ? '#f4f7f3' : '#111e23');
+      } catch { document.documentElement.dataset.theme = 'dark'; }
+    </script>
+    <title>Didula | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body style="margin:0;min-height:100vh;background:var(--theme-bg,#050816)">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

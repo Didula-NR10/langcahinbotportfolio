@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.vite/
+.npm-cache/
+.edge-qa*/
+galaxy-check*.png
+.env
+.env.*
+!.env.example
+test-artifacts/

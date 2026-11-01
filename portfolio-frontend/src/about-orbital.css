@@ -1,0 +1,249 @@
+.about-page.about-orbital {
+  --orbital-panel: rgba(5, 13, 29, .76);
+  --orbital-panel-deep: rgba(4, 13, 28, .88);
+  --orbital-text: #f1f5f9;
+  --orbital-muted: #b3c2d6;
+  --orbital-cyan: #67e8f9;
+  --orbital-blue: #3b82f6;
+  --orbital-border: rgba(103, 232, 249, .38);
+  --orbital-border-soft: rgba(103, 232, 249, .18);
+  color: var(--orbital-text);
+}
+.about-page.about-orbital .observatory-hero { align-items: center; min-height: 100svh; background: #050816; }
+.about-page.about-orbital .observatory-image { opacity: 1; filter: none; }
+.about-page.about-orbital .observatory-clean {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: url('/assets/observatory-clean-plate.png') center center / cover no-repeat;
+  opacity: 0;
+}
+.about-page.about-orbital .observatory-clean.is-ready { opacity: 1; }
+.about-page.about-orbital .rotating-earth {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  clip-path: polygon(5% 0, 90% 0, 92% 30%, 95% 68%, 70% 70%, 30% 69%, 2% 68%, 1% 35%);
+}
+.about-page.about-orbital .rotating-earth canvas { display: block; width: 100%; height: 100%; }
+.about-page.about-orbital .observatory-shade {
+  z-index: 4;
+  background: linear-gradient(90deg, rgba(3,6,17,.58), rgba(3,6,17,.24) 48%, rgba(3,6,17,.36)),
+    linear-gradient(0deg, rgba(3,6,17,.5), transparent 22%, transparent 76%, rgba(3,6,17,.27));
+}
+.about-page.about-orbital .about-composition {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 1.55fr) minmax(0, .96fr);
+  align-items: stretch;
+  gap: 17px;
+  width: min(1600px, calc(100% - 80px));
+  min-height: 0;
+  margin: 116px auto 30px;
+}
+.about-page.about-orbital .about-visual-card,
+.about-page.about-orbital .about-summary-card,
+.about-page.about-orbital .orbital-focus-panel,
+.about-page.about-orbital .orbital-location-panel,
+.about-page.about-orbital .orbital-values {
+  border: 1px solid var(--orbital-border);
+  border-radius: 13px;
+  background: var(--orbital-panel);
+  box-shadow: inset 0 0 0 4px rgba(4,13,28,.23), 0 14px 38px rgba(0,0,0,.17);
+}
+.about-page.about-orbital .about-visual-card,
+.about-page.about-orbital .about-summary-card { min-height: 545px; }
+.about-page.about-orbital .about-visual-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 21px 25px 22px;
+  overflow: hidden;
+  clip-path: polygon(17px 0, calc(100% - 17px) 0, 100% 17px, 100% calc(100% - 17px), calc(100% - 17px) 100%, 17px 100%, 0 calc(100% - 17px), 0 17px);
+  background: linear-gradient(150deg, rgba(5,13,29,.82), rgba(4,14,29,.64));
+}
+.about-page.about-orbital .about-visual-card::before { content: ''; position: absolute; inset: 20px; border: 1px solid var(--orbital-border-soft); border-radius: 12px; pointer-events: none; }
+.about-page.about-orbital .about-visual-card::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, var(--orbital-cyan), transparent 28%) top left / 90px 3px no-repeat, linear-gradient(270deg, var(--orbital-cyan), transparent 28%) bottom right / 90px 3px no-repeat; opacity: .75; transition: opacity .3s; }
+.about-page.about-orbital .about-visual-card:hover::after { opacity: 1; }
+.orbital-identity-top { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.orbital-identity-top p { margin: 0; color: var(--orbital-cyan); font: 600 11px 'JetBrains Mono', monospace; letter-spacing: .08em; }
+.orbital-identity-top span { color: var(--orbital-cyan); font: 500 18px 'JetBrains Mono', monospace; }
+.about-page.about-orbital .observatory-hologram { position: relative; flex: 1; align-self: center; width: min(100%, 440px); height: auto; min-height: 410px; margin: 6px 0 0; }
+.about-page.about-orbital .hologram,
+.about-page.about-orbital .hologram-trigger:hover .hologram,
+.about-page.about-orbital .hologram-trigger:focus-visible .hologram { transform: none; filter: none; }
+.about-page.about-orbital .hologram-trigger { perspective: none; }
+.about-page.about-orbital .hologram::before { display: none; }
+.about-page.about-orbital .hologram-photo-beam { top: 46%; bottom: 15%; left: 18%; right: 18%; z-index: 1; background: linear-gradient(to top, rgba(103,232,249,.2), transparent 87%); filter: none; }
+.about-page.about-orbital .hologram-profile-photo {
+  position: absolute;
+  z-index: 2;
+  top: 5%;
+  left: 0;
+  width: 100%;
+  height: 76%;
+  object-fit: contain;
+  object-position: center bottom;
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(59,130,246,.24));
+  mask-image: linear-gradient(#000 0 84%, transparent 100%);
+  transition: transform .35s ease;
+}
+.about-page.about-orbital .hologram-trigger:hover .hologram-profile-photo,
+.about-page.about-orbital .hologram-trigger:focus-visible .hologram-profile-photo { transform: translateY(-3px); }
+.about-page.about-orbital .hologram-projector-base { left: 9%; bottom: 1%; width: 82%; z-index: 4; filter: drop-shadow(0 0 14px rgba(103,232,249,.22)); }
+.orbital-portrait-rings { position: absolute; z-index: 0; top: 2%; left: 11%; width: 78%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(34,105,174,.21), transparent 72%); opacity: .83; transition: opacity .3s; }
+.orbital-portrait-rings i { position: absolute; display: block; border: 1px solid rgba(103,232,249,.37); border-radius: 50%; }
+.orbital-portrait-rings i:nth-child(1) { inset: 0; border-style: dashed; animation: orbital-ring 35s linear infinite; }
+.orbital-portrait-rings i:nth-child(2) { inset: 9%; border-color: rgba(103,232,249,.45); border-left-color: transparent; animation: orbital-ring-reverse 50s linear infinite; }
+.orbital-portrait-rings i:nth-child(3) { inset: 18%; border-color: rgba(59,130,246,.38); border-bottom-color: transparent; animation: orbital-ring 70s linear infinite; }
+.orbital-portrait-rings b { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: var(--orbital-cyan); box-shadow: 0 0 11px var(--orbital-cyan); }
+.orbital-portrait-rings b:nth-of-type(1) { top: 9%; left: 20%; }
+.orbital-portrait-rings b:nth-of-type(2) { right: 8%; bottom: 30%; }
+.about-page.about-orbital .hologram-trigger:hover .orbital-portrait-rings { opacity: 1; }
+.orbital-portrait-scan { position: absolute; z-index: 3; left: 17%; right: 17%; top: 14%; height: 1px; background: linear-gradient(90deg, transparent, rgba(103,232,249,.32), transparent); opacity: .42; animation: orbital-scan 10s ease-in-out infinite; pointer-events: none; }
+.about-page.about-orbital .about-visual-caption { position: relative; z-index: 5; display: grid; gap: 4px; margin: 2px 0 0; font-family: 'Space Grotesk', Arial, sans-serif; letter-spacing: .03em; }
+.about-page.about-orbital .about-visual-caption strong { color: var(--orbital-text); font-size: 18px; line-height: 1; }
+.about-page.about-orbital .about-visual-caption span { color: var(--orbital-cyan); font: 600 10px 'JetBrains Mono', monospace; letter-spacing: .11em; }
+.about-page.about-orbital .about-summary-card { display: flex; flex-direction: column; gap: 0; min-width: 0; padding: clamp(24px, 2.1vw, 36px); }
+.orbital-summary-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: clamp(18px, 2vw, 34px); color: var(--orbital-cyan); font: 600 10px 'JetBrains Mono', monospace; letter-spacing: .1em; }
+.orbital-summary-top small { color: var(--orbital-muted); font-size: 9px; white-space: nowrap; }
+.about-page.about-orbital .about-summary-card h1 { max-width: 630px; margin: 0 0 22px; color: var(--orbital-text); font-size: clamp(35px, 3.4vw, 61px); font-weight: 750; letter-spacing: -.06em; line-height: 1.06; text-shadow: none; }
+.about-page.about-orbital .about-summary-card h1 em { color: var(--orbital-blue); background: linear-gradient(90deg, var(--orbital-cyan), var(--orbital-blue)); background-clip: text; -webkit-text-fill-color: transparent; }
+.orbital-intro-body { margin-bottom: 24px; }
+.about-page.about-orbital .orbital-intro-body p { max-width: 590px; margin: 0 0 13px; color: var(--orbital-text); font-size: clamp(14px, 1.05vw, 17px); line-height: 1.62; }
+.about-page.about-orbital .orbital-intro-body p + p { color: var(--orbital-muted); }
+.orbital-indicators { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; margin-top: auto; }
+.orbital-indicator { position: relative; display: flex; flex-direction: column; min-width: 0; min-height: 142px; padding: 12px 10px 11px; overflow: hidden; border: 1px solid var(--orbital-border-soft); border-radius: 8px; background: rgba(4,20,39,.58); transition: background .25s, border-color .25s; }
+.orbital-indicator:hover { border-color: var(--orbital-border); background: rgba(15,46,76,.7); }
+.orbital-indicator svg { flex: none; margin-bottom: 8px; color: var(--orbital-cyan); transition: transform .25s; }
+.orbital-indicator:hover svg { transform: translateY(-2px); }
+.orbital-indicator span { color: var(--orbital-cyan); font: 600 8px 'JetBrains Mono', monospace; letter-spacing: .05em; }
+.orbital-indicator strong { margin: 3px 0; color: var(--orbital-text); font-size: clamp(12px, 1vw, 16px); line-height: 1.16; overflow-wrap: anywhere; }
+.orbital-indicator small { color: var(--orbital-muted); font-size: 10px; line-height: 1.35; }
+.orbital-indicator i { display: block; width: 24%; height: 2px; margin-top: auto; background: var(--orbital-cyan); transition: width .25s; }
+.orbital-indicator:hover i { width: 55%; }
+.about-page.about-orbital .orbital-journey { display: inline-flex; align-items: center; justify-content: space-between; gap: 20px; align-self: flex-start; min-height: 46px; margin: 24px 0 0; padding: 0 17px; border: 1px solid var(--orbital-cyan); border-radius: 7px; background: rgba(4,19,39,.72); color: var(--orbital-text); box-shadow: inset 0 0 12px rgba(103,232,249,.09); font: 600 11px 'JetBrains Mono', monospace; text-decoration: none; transition: transform .25s, background .25s; }
+.about-page.about-orbital .orbital-journey:hover { transform: translateY(-2px); background: rgba(25,77,116,.75); }
+.orbital-journey svg { color: var(--orbital-cyan); transition: transform .25s; }
+.orbital-journey:hover svg { transform: translateX(4px); }
+.orbital-side { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 16px; min-width: 0; }
+.about-page.about-orbital .orbital-focus-panel { min-width: 0; padding: 20px 16px 13px; }
+.orbital-panel-label { margin: 0; color: var(--orbital-cyan); font: 600 10px 'JetBrains Mono', monospace; letter-spacing: .09em; }
+.orbital-focus-list { margin-top: 12px; }
+.orbital-focus-item { border-top: 1px solid var(--orbital-border-soft); }
+.orbital-focus-item button { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 68px; padding: 8px 4px; border: 0; border-left: 2px solid transparent; background: transparent; color: var(--orbital-text); text-align: left; cursor: pointer; transition: border-color .22s, background .22s; }
+.orbital-focus-item button:hover, .orbital-focus-item button[aria-expanded='true'] { border-left-color: var(--orbital-cyan); background: rgba(46,119,180,.11); }
+.orbital-focus-icon { flex: none; color: var(--orbital-cyan); transition: filter .22s; }
+.orbital-focus-item button:hover .orbital-focus-icon { filter: drop-shadow(0 0 7px rgba(103,232,249,.55)); }
+.orbital-focus-item button > span { display: grid; min-width: 0; gap: 4px; }
+.orbital-focus-item strong { font-size: clamp(11px, .86vw, 14px); font-weight: 650; line-height: 1.25; }
+.orbital-focus-item small { color: var(--orbital-muted); font-size: 10px; line-height: 1.35; }
+.orbital-focus-arrow { flex: none; margin-left: auto; color: var(--orbital-cyan); transition: transform .22s; }
+.orbital-focus-item button:hover .orbital-focus-arrow, .orbital-focus-item button[aria-expanded='true'] .orbital-focus-arrow { transform: translateX(3px) rotate(90deg); }
+.orbital-focus-detail { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .3s ease, opacity .25s ease; }
+.orbital-focus-detail.is-open { max-height: 120px; opacity: 1; }
+.orbital-focus-detail p { margin: -2px 12px 12px 42px; color: var(--orbital-muted); font-size: 11px; line-height: 1.5; }
+.about-page.about-orbital .orbital-location-panel { display: grid; gap: 13px; min-width: 0; padding: 18px 19px; }
+.orbital-location-row, .orbital-mission-row { display: flex; align-items: center; gap: 12px; }
+.orbital-location-row { padding-bottom: 13px; border-bottom: 1px solid var(--orbital-border-soft); }
+.orbital-location-row svg, .orbital-mission-row svg { flex: none; color: var(--orbital-cyan); }
+.orbital-location-row strong, .orbital-mission-row strong { color: var(--orbital-text); font-size: 13px; }
+.orbital-mission-row > div { display: grid; gap: 5px; }
+.orbital-mission-row span { color: var(--orbital-cyan); font: 600 9px 'JetBrains Mono', monospace; }
+.orbital-mission-row strong { display: flex; align-items: center; gap: 7px; font-weight: 550; white-space: nowrap; }
+.orbital-mission-row i { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--orbital-cyan); animation: orbital-status 4s ease-in-out infinite; }
+.orbital-portrait-rings i, .orbital-portrait-scan, .orbital-mission-row i { animation-play-state: paused; }
+.observatory-hero.is-active .orbital-portrait-rings i,
+.observatory-hero.is-active .orbital-portrait-scan,
+.observatory-hero.is-active .orbital-mission-row i { animation-play-state: running; }
+.about-page.about-orbital .orbital-values { grid-column: 1 / -1; padding: 17px 22px 19px; }
+.orbital-values-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 12px; }
+.orbital-value { display: flex; align-items: center; gap: 13px; min-width: 0; padding: 4px 16px; transition: background .25s, transform .25s; }
+.orbital-value:first-child { padding-left: 0; }
+.orbital-value + .orbital-value { border-left: 1px solid var(--orbital-border-soft); }
+.orbital-value:hover { transform: translateY(-2px); background: rgba(103,232,249,.05); }
+.orbital-value-icon { display: grid; place-items: center; flex: none; width: 49px; height: 49px; border: 1px solid var(--orbital-border-soft); border-radius: 50%; color: var(--orbital-cyan); background: rgba(14,54,90,.27); transition: color .25s; }
+.orbital-value:hover .orbital-value-icon { color: #fff; }
+.orbital-value strong { display: block; color: var(--orbital-text); font-size: 13px; }
+.orbital-value p { margin: 4px 0 0; color: var(--orbital-muted); font-size: 10px; line-height: 1.45; }
+.orbital-theme-toggle { position: absolute; z-index: 8; top: 22px; right: clamp(20px, 4vw, 68px); display: inline-flex; align-items: center; gap: 7px; min-height: 37px; padding: 0 11px; border: 1px solid var(--orbital-border); border-radius: 999px; background: var(--orbital-panel-deep); color: var(--orbital-text); font: 600 11px 'JetBrains Mono', monospace; cursor: pointer; }
+.orbital-theme-toggle svg { color: var(--orbital-cyan); }
+@keyframes orbital-ring { to { transform: rotate(360deg); } }
+@keyframes orbital-ring-reverse { to { transform: rotate(-360deg); } }
+@keyframes orbital-scan { 0%, 5% { transform: translateY(0); opacity: 0; } 15% { opacity: .35; } 55% { transform: translateY(260px); opacity: .24; } 65%, 100% { transform: translateY(260px); opacity: 0; } }
+@keyframes orbital-status { 50% { opacity: .28; transform: scale(.8); } }
+
+.about-page.about-orbital[data-theme='light'] {
+  --orbital-panel: rgba(248,252,255,.9);
+  --orbital-panel-deep: rgba(248,252,255,.94);
+  --orbital-text: #14213d;
+  --orbital-muted: #52647d;
+  --orbital-cyan: #0891b2;
+  --orbital-blue: #2563eb;
+  --orbital-border: rgba(37,99,235,.3);
+  --orbital-border-soft: rgba(37,99,235,.16);
+}
+.about-page.about-orbital[data-theme='light'] .observatory-image { filter: brightness(1.25) saturate(.8); }
+.about-page.about-orbital[data-theme='light'] .observatory-clean { filter: brightness(1.25) saturate(.8); }
+.about-page.about-orbital[data-theme='light'] .observatory-shade { background: linear-gradient(90deg, rgba(232,244,255,.14), rgba(232,244,255,.06), rgba(232,244,255,.12)); }
+.about-page.about-orbital[data-theme='light'] .about-visual-card { background: rgba(248,252,255,.86); }
+.about-page.about-orbital[data-theme='light'] .orbital-indicator { background: rgba(232,244,255,.7); }
+.about-page.about-orbital[data-theme='light'] .orbital-indicator:hover, .about-page.about-orbital[data-theme='light'] .orbital-focus-item button:hover { background: rgba(198,229,250,.75); }
+.about-page.about-orbital[data-theme='light'] .orbital-journey { background: rgba(248,252,255,.83); }
+.about-page.about-orbital[data-theme='light'] .orbital-journey:hover { background: #eaf2fc; }
+.about-page.about-orbital[data-theme='light'] .orbital-value-icon { background: rgba(209,235,251,.9); }
+
+@media (max-width: 1280px) {
+  .about-page.about-orbital .about-composition { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); width: calc(100% - 48px); }
+  .orbital-side { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(250px, .7fr); grid-template-rows: auto; }
+  .orbital-focus-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; }
+  .orbital-mission-row strong { white-space: normal; }
+}
+@media (max-width: 800px) {
+  .about-page.about-orbital .about-composition { gap: 14px; width: calc(100% - 32px); }
+  .about-page.about-orbital .about-visual-card { min-height: 470px; }
+  .about-page.about-orbital .observatory-hologram { min-height: 360px; }
+  .about-page.about-orbital .about-summary-card { min-height: 470px; padding: 22px; }
+  .orbital-indicators { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .orbital-indicator { min-height: 105px; }
+  .orbital-values-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 0; }
+  .orbital-value:nth-child(3) { border-left: 0; padding-left: 0; }
+}
+@media (max-width: 700px) {
+  .about-page.about-orbital .observatory-image,
+  .about-page.about-orbital .observatory-clean { background-position: center center; }
+  .about-page.about-orbital .about-composition { display: flex; flex-direction: column; gap: 15px; margin: 140px auto 24px; }
+  .orbital-theme-toggle { top: 92px; right: 16px; }
+  .about-page.about-orbital .about-summary-card { display: contents; }
+  .orbital-intro-heading { order: 1; padding: 23px 20px; border: 1px solid var(--orbital-border); border-radius: 12px; background: var(--orbital-panel); }
+  .orbital-summary-top { flex-wrap: wrap; margin-bottom: 15px; }
+  .about-page.about-orbital .about-summary-card h1 { margin-bottom: 0; font-size: clamp(35px, 9vw, 56px); }
+  .about-page.about-orbital .about-visual-card { order: 2; min-height: 470px; }
+  .orbital-intro-body { order: 3; margin: 0; padding: 20px; border: 1px solid var(--orbital-border); border-radius: 12px; background: var(--orbital-panel); }
+  .orbital-intro-body p:last-child { margin-bottom: 0 !important; }
+  .orbital-indicators { order: 4; }
+  .orbital-side { order: 5; display: grid; grid-template-columns: 1fr; }
+  .orbital-values { order: 6; }
+  .about-page.about-orbital .orbital-journey { order: 7; align-self: stretch; justify-content: space-between; margin: 0; }
+  .orbital-focus-list { display: block; }
+  .about-page.about-orbital .observatory-shade { background: linear-gradient(90deg, rgba(3,6,17,.66), rgba(3,6,17,.32)); }
+}
+@media (max-width: 420px) {
+  .about-page.about-orbital .about-composition { width: calc(100% - 24px); }
+  .about-page.about-orbital .about-visual-card { min-height: 420px; }
+  .about-page.about-orbital .observatory-hologram { min-height: 320px; }
+  .orbital-indicators { gap: 7px; }
+  .orbital-indicator { padding: 10px 8px; }
+  .orbital-values-grid { grid-template-columns: 1fr; }
+  .orbital-value { padding: 10px 0; border-left: 0 !important; border-top: 1px solid var(--orbital-border-soft); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-page.about-orbital .orbital-portrait-rings i,
+  .about-page.about-orbital .orbital-portrait-scan,
+  .about-page.about-orbital .orbital-mission-row i { animation: none; }
+  .about-page.about-orbital *, .about-page.about-orbital *::before, .about-page.about-orbital *::after { transition-duration: .01ms !important; }
+}
