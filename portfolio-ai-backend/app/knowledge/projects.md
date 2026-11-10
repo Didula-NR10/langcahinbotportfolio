@@ -8,7 +8,7 @@ An Expo travel client and FastAPI forecasting service for Sri Lankan districts, 
 
 ## 2. Golden Treat Bakery
 
-A PHP bakery application with customer and administrative areas, ordering, billing, stock, and account workflows. Technologies shown: PHP, HTML, CSS, JavaScript, MySQL, and Composer. The portfolio says this is a team project; individual responsibilities have not been specified.
+A PHP bakery application with customer and administrative areas, ordering, billing, stock, and account workflows. Technologies shown: PHP, HTML, CSS, JavaScript, MySQL, and Composer. Didula worked on PHP frontend/backend integration, login gating for cart actions, and admin FAQ management in this team project.
 
 ## 3. The Last Run
 
@@ -21,3 +21,7 @@ A Java Swing healthcare application. The developer's stated contribution is the 
 ## 5. Rawana Ceylon
 
 A React/Vite social client connected to a FastAPI backend for accounts, posts, stories, and profile workflows. Technologies shown: JavaScript, React, Vite, Python, FastAPI, PostgreSQL, Cloudinary, and Docker. Individual ownership of each feature has not been specified. Repository: https://github.com/Didula-NR10/socialmedia
+
+## 6. NUMBERBOUND
+
+A Godot/C++ 2D cooperative fantasy platform game featuring four characters, stacking, puzzles, number collection and crafting. The developer-supplied project document reports an implemented offline scope; multiplayer and later phases remain planned or unverified. Didula led architecture-first design and iterative C++/Godot development. The repository and release status have not been independently inspected.

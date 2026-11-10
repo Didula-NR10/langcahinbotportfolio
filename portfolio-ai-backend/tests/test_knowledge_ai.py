@@ -50,6 +50,19 @@ def test_generic_project_question_stays_general(tmp_path):
     assert answer.mode == "general"
 
 
+def test_named_project_question_uses_rag_knowledge(tmp_path):
+    doc = Document(
+        page_content="NUMBERBOUND is an offline cooperative platform game.",
+        metadata={"source": "projects/numberbound.md", "category": "numberbound"},
+    )
+    ai = FakeAI()
+    service = make_service(tmp_path, ai, FakeRetriever([doc]), KNOWLEDGE_MODE="rag")
+    answer = asyncio.run(service.answer("What is NUMBERBOUND?"))
+    assert answer.mode == "rag"
+    assert answer.sources[0].document == "projects/numberbound.md"
+    assert ai.calls[0][0] == "grounded"
+
+
 def test_implicit_portfolio_project_question_uses_knowledge(tmp_path):
     answer = asyncio.run(make_service(tmp_path).answer("What projects have been completed?"))
     assert answer.mode == "direct_context"

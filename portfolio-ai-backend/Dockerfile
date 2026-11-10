@@ -9,7 +9,7 @@ COPY scripts ./scripts
 COPY migrations ./migrations
 COPY alembic.ini ./
 
-ARG INSTALL_RAG=false
+ARG INSTALL_RAG=true
 ARG INSTALL_ADMIN=false
 RUN python -m pip install --no-cache-dir --upgrade "pip>=26.2,<27" \
     && if [ "$INSTALL_ADMIN" = "true" ]; then pip install --no-cache-dir ".[admin]"; elif [ "$INSTALL_RAG" = "true" ]; then pip install --no-cache-dir ".[rag]"; else pip install --no-cache-dir .; fi \

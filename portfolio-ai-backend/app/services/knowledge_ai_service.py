@@ -26,6 +26,12 @@ PORTFOLIO_TOPIC_QUERY = re.compile(
     r"^(?:what|which|list|show|describe|tell me about)\b.*\b(?:projects|qualifications|certifications|experience|education)\b",
     re.IGNORECASE,
 )
+PORTFOLIO_ENTITY = re.compile(
+    r"\b(?:didula|tripsmart|golden treat|the last run|rawana|raawana|numberbound|hi\.?ch|"
+    r"flagguessingapp|smart restaurant 360|manufacturing erp|salesman tracking|"
+    r"student performance tracking)\b",
+    re.IGNORECASE,
+)
 
 
 class KnowledgeAIService:
@@ -56,7 +62,7 @@ class KnowledgeAIService:
             raise ValueError("Unknown knowledge mode.")
         history = list(history or [])
         if mode == "auto":
-            if GENERAL_FORM.search(question) and not PERSONAL_REFERENCE.search(question) and not PORTFOLIO_TOPIC_QUERY.search(question):
+            if GENERAL_FORM.search(question) and not PERSONAL_REFERENCE.search(question) and not PORTFOLIO_TOPIC_QUERY.search(question) and not PORTFOLIO_ENTITY.search(question):
                 mode = "general"
             else:
                 mode = self.settings.knowledge_mode
