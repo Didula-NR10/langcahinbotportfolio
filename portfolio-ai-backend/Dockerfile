@@ -20,4 +20,4 @@ RUN python -m pip install --no-cache-dir --upgrade "pip>=26.2,<27" \
 USER appuser
 EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s CMD python -c "import os, urllib.request; urllib.request.urlopen('http://127.0.0.1:' + os.getenv('PORT', '8000') + '/api/v1/health', timeout=3)" || exit 1
-CMD ["python", "-m", "scripts.run_production"]
+CMD ["sh", "-c", "if [ \"$KNOWLEDGE_MODE\" = \"rag\" ]; then python -m scripts.index_knowledge || exit 1; fi; exec python -m scripts.run_production"]
