@@ -28,7 +28,7 @@ class Settings(BaseSettings):
     groq_api_key: SecretStr | None = Field(default=None, validation_alias="GROQ_API_KEY", repr=False, exclude=True)
     groq_model: str = Field(default="openai/gpt-oss-20b", validation_alias="GROQ_MODEL")
     llm_temperature: float = Field(default=0.3, ge=0, le=2, validation_alias="LLM_TEMPERATURE")
-    llm_max_output_tokens: int = Field(default=400, ge=1, le=8192, validation_alias="LLM_MAX_OUTPUT_TOKENS")
+    llm_max_output_tokens: int = Field(default=2048, ge=1, le=8192, validation_alias="LLM_MAX_OUTPUT_TOKENS")
     llm_timeout_seconds: float = Field(default=30, gt=0, le=120, validation_alias="LLM_TIMEOUT_SECONDS")
     llm_max_retries: int = Field(default=1, ge=0, le=3, validation_alias="LLM_MAX_RETRIES")
     llm_max_question_chars: int = Field(default=4000, ge=1, le=10000, validation_alias="LLM_MAX_QUESTION_CHARS")

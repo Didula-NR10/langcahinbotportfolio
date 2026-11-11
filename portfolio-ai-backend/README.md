@@ -77,7 +77,7 @@ Create a Groq API key in the [Groq Cloud console](https://console.groq.com/keys)
 | --- | --- | --- |
 | `GROQ_MODEL` | `openai/gpt-oss-20b` | Hosted model identifier |
 | `LLM_TEMPERATURE` | `0.3` | Sampling temperature, 0–2 |
-| `LLM_MAX_OUTPUT_TOKENS` | `400` | Maximum generated tokens, 1–8192 |
+| `LLM_MAX_OUTPUT_TOKENS` | `2048` | Maximum generated tokens, 1–8192; GPT-OSS uses at least 2048 for reasoning and the final answer |
 | `LLM_TIMEOUT_SECONDS` | `30` | Request timeout, greater than 0 and at most 120 seconds |
 | `LLM_MAX_RETRIES` | `1` | Provider retries, 0–3 |
 | `LLM_MAX_QUESTION_CHARS` | `4000` | Maximum question length, 1–10000 characters |
@@ -191,7 +191,7 @@ Local tests use fake providers and consume no API tokens. The live check needs a
 | `MAX_CONCURRENT_CHAT_REQUESTS` | `4` | Process-wide in-flight chat cap |
 | `LLM_MAX_RESPONSE_CHARS` | `8000` | Final response text cap |
 
-The Groq client caps generation at `LLM_MAX_OUTPUT_TOKENS=400`, times out after 30 seconds, and retries at most once by default. Conversation history is bounded by message count and characters; retrieved context is bounded by `RAG_MAX_CONTEXT_CHARS`. Provider rate limits return a safe `429` and `Retry-After: 60`. The frontend never receives provider keys or raw exceptions. Prompts mark retrieved text as untrusted reference data. The model has no tools, arbitrary file access, or command execution. Prompt injection remains a model-behavior risk, so portfolio facts must be reviewed before publishing.
+The Groq client caps generation at `LLM_MAX_OUTPUT_TOKENS=2048` by default (and uses at least 2048 for GPT-OSS), times out after 30 seconds, and retries at most once by default. Conversation history is bounded by message count and characters; retrieved context is bounded by `RAG_MAX_CONTEXT_CHARS`. Provider rate limits return a safe `429` and `Retry-After: 60`. The frontend never receives provider keys or raw exceptions. Prompts mark retrieved text as untrusted reference data. The model has no tools, arbitrary file access, or command execution. Prompt injection remains a model-behavior risk, so portfolio facts must be reviewed before publishing.
 
 `GET /api/v1/health` reports process liveness without provider calls. `GET /api/v1/ready` checks that the knowledge directory exists and, in RAG mode, that an active index manifest exists; it does not call Groq or the embedding provider. Request logs include a generated request ID, route path, status and duration, but omit request bodies, sessions and IPs. Use the `X-Request-ID` response header to correlate failures. Production API responses include HSTS, frame protection, no-sniff, referrer and permissions headers.
 

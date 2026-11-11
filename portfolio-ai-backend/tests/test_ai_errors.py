@@ -69,6 +69,19 @@ def test_llm_factory_passes_configured_limits(monkeypatch):
     assert captured["api_key"].get_secret_value() == "dummy-test-value"
 
 
+def test_gpt_oss_has_room_for_reasoning_and_answer(monkeypatch):
+    captured = {}
+
+    def fake_chat_groq(**kwargs):
+        captured.update(kwargs)
+        return object()
+
+    monkeypatch.setattr("app.ai.llm.ChatGroq", fake_chat_groq)
+    create_llm(settings(GROQ_API_KEY="dummy-test-value", GROQ_MODEL="openai/gpt-oss-20b", LLM_MAX_OUTPUT_TOKENS=400))
+    assert captured["max_tokens"] == 2048
+    assert captured["reasoning_effort"] == "low"
+
+
 def test_groq_settings_load_from_environment_without_exposing_key(monkeypatch):
     monkeypatch.setenv("GROQ_API_KEY", "dummy-test-value")
     monkeypatch.setenv("GROQ_MODEL", "example-model")

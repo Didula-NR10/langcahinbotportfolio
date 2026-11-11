@@ -11,12 +11,14 @@ def create_llm(settings: Settings) -> ChatGroq:
     if key is None or not key.get_secret_value().strip():
         raise MissingCredentialsError("Set GROQ_API_KEY before using the AI engine.")
 
+    is_reasoning_model = settings.groq_model.startswith("openai/gpt-oss-")
     try:
         return ChatGroq(
             model=settings.groq_model,
             api_key=key,
             temperature=settings.llm_temperature,
-            max_tokens=settings.llm_max_output_tokens,
+            max_tokens=max(settings.llm_max_output_tokens, 2048) if is_reasoning_model else settings.llm_max_output_tokens,
+            **({"reasoning_effort": "low"} if is_reasoning_model else {}),
             timeout=settings.llm_timeout_seconds,
             max_retries=settings.llm_max_retries,
         )
